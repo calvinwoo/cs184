@@ -1,0 +1,2 @@
+Calvin Woo, SID 22055725
+Object transformations are all correct, lighting is a bit off however. Specifically, the positioning of the lights i think.
