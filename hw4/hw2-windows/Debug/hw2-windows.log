@@ -1,10 +1,10 @@
-﻿Build started 11/8/2012 4:19:04 PM.
-     1>Project "C:\Users\Poobird\Dropbox\HW\cs184\hw4\hw4\hw2-windows\hw2-windows.vcxproj" on node 2 (Build target(s)).
+﻿Build started 12/1/2012 6:25:06 PM.
+     1>Project "C:\Users\batuo\github\cs184\hw4\hw2-windows\hw2-windows.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ISOIL.h /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt display.cpp
          display.cpp
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Poobird\Dropbox\HW\cs184\hw4\hw4\Debug\hw2-windows.exe" /INCREMENTAL /NOLOGO /LIBPATH:.\lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib glew32.lib glut32.lib glu32.lib opengl32.lib FreeImage.lib SOIL.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Poobird\Dropbox\HW\cs184\hw4\hw4\Debug\hw2-windows.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Poobird\Dropbox\HW\cs184\hw4\hw4\Debug\hw2-windows.lib" /MACHINE:X86 Debug\display.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\batuo\github\cs184\hw4\Debug\hw2-windows.exe" /INCREMENTAL /NOLOGO /LIBPATH:.\lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib glew32.lib glut32.lib glu32.lib opengl32.lib FreeImage.lib SOIL.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\batuo\github\cs184\hw4\Debug\hw2-windows.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\batuo\github\cs184\hw4\Debug\hw2-windows.lib" /MACHINE:X86 Debug\display.obj
          Debug\glm.obj
          Debug\imageloader.obj
          Debug\main.obj
@@ -12,9 +12,9 @@
          Debug\shaders.obj
          Debug\Transform.obj
          Debug\grader.obj
-         hw2-windows.vcxproj -> C:\Users\Poobird\Dropbox\HW\cs184\hw4\hw4\Debug\hw2-windows.exe
-     1>Done Building Project "C:\Users\Poobird\Dropbox\HW\cs184\hw4\hw4\hw2-windows\hw2-windows.vcxproj" (Build target(s)).
+         hw2-windows.vcxproj -> C:\Users\batuo\github\cs184\hw4\Debug\hw2-windows.exe
+     1>Done Building Project "C:\Users\batuo\github\cs184\hw4\hw2-windows\hw2-windows.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:03.30
+Time Elapsed 00:00:02.99

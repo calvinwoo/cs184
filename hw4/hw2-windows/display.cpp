@@ -32,7 +32,7 @@ using namespace std ;
 GLuint _textureId;
 GLuint _textureId2;
 
-GLMmodel* gladius;
+GLMmodel* f16;
 int displayList=0;
 
 // New helper transformation function to transform vector by modelview 
@@ -182,13 +182,14 @@ void display() {
 	delete image;
 
 	
-		gladius = (GLMmodel*)malloc(sizeof(GLMmodel));
-		gladius = glmReadOBJ("objs/f16.obj");
+	/*f16 = (GLMmodel*)malloc(sizeof(GLMmodel));
+	f16 = glmReadOBJ("objs/f16.obj");
 	
-		displayList=glGenLists(1);
-		glNewList(displayList,GL_COMPILE);
-			glmDraw(gladius, GLM_SMOOTH);
-		glEndList();
+	displayList=glGenLists(1);
+	glNewList(displayList,GL_COMPILE);
+		glmDraw(f16, GLM_SMOOTH);
+	glEndList();
+	free(f16);*/
 
 
 	glClearColor(0, .3, .8, 0);
