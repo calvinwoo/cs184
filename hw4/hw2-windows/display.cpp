@@ -238,12 +238,11 @@ void display() {
 		glUniform1i(istex, false);
 		glUniform1i(tex, 0) ;
 		
-    
 
         // Transformations for objects, involving translation and scaling 
         mat4 sc(1.0) , tr(1.0), transf(1.0) ; 
-        sc = Transform::scale(sx,sy,1.0) ; 
-        tr = Transform::translate(tx,ty,tz) ; 
+        /*sc = Transform::scale(sx,sy,1.0) ; 
+        tr = Transform::translate(tx,ty,tz) ;*/
 
         // YOUR CODE FOR HW 2 HERE.  
         // You need to use scale, translate and modelview to 
@@ -263,6 +262,7 @@ void display() {
 		glUniform4fv(specularcol, 1, array);
 		glUniform1f(shininesscol, 100); 
 
+		/*
 		DrawWall(0, 1.8, 2, 5.9, 0.1, 2);	//back left
 		DrawWall(-6, 0, 2.0, 0.1, 1.9, 2);	//left
 		DrawWall(3.8, 0.2, 5.9, 0.1, 2.1, 1.9);	//middle
@@ -274,19 +274,6 @@ void display() {
 		DrawWall(4.8, -1.9, 3.7, 1.4, 0.1, 3.4);	//front tower
 		
 		DrawGround(0, 0, 0, 15, 15, 0.1);	//ground
-
-
-		//chandelier
-		/*glPushMatrix();
-			glTranslatef(0.0,0.0,3.5); 
-			glScalef(.1f, .8f, .1f);
-			glutSolidCube(.5);
-		glPopMatrix();
-		glPushMatrix();
-			glTranslatef(0.32,-0.4,3.5); 
-			glScalef(.8f, .1f, .1f);
-			DrawCube(255,127,0,1);
-		glPopMatrix();*/
 
 		//guy bottom left attacker
 		glPushMatrix();
@@ -358,9 +345,7 @@ void display() {
 			glRotatef(45, 1, 0, 0);
 			glScalef(0.2, 3, 0.2);
 			glutSolidCube(0.5) ; 
-		glPopMatrix();
-
-
+		glPopMatrix();*/
 
 
         for (int i = 0 ; i < numobjects ; i++) {

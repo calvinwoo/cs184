@@ -183,25 +183,57 @@ void specialKey(int key, int x, int y) {
           if (transop == view) Transform::left(amount, eye,  up);
           else if (transop == scale) sx -= amount * 0.01 ; 
           else if (transop == translate) tx -= amount * 0.01 ; 
-		  
+		  else if (transop == light0) lightposn[0] -= amount * 0.01;
+		  else if (transop == light1) lightposn[4] -= amount * 0.01;
+		  else if (transop == light2) lightposn[8] -= amount * 0.01;
           break;
 	case 101: //up
           if (transop == view) Transform::up(amount,  eye,  up);
           else if (transop == scale) sy += amount * 0.01 ; 
           else if (transop == translate) ty += amount * 0.01 ; 
 		  else if (transop == zTranslate) tz += amount * 0.01 ;
+		  else if (transop == light0) lightposn[2] += amount * 0.01;
+		  else if (transop == light1) lightposn[6] += amount * 0.01;
+		  else if (transop == light2) lightposn[10] += amount * 0.01;
           break;
 	case 102: //right
           if (transop == view) Transform::left(-amount, eye,  up);
           else if (transop == scale) sx += amount * 0.01 ; 
           else if (transop == translate) tx += amount * 0.01 ; 
+		  else if (transop == light0) lightposn[0] += amount * 0.01;
+		  else if (transop == light1) lightposn[4] += amount * 0.01;
+		  else if (transop == light2) lightposn[8] += amount * 0.01;
           break;
 	case 103: //down
           if (transop == view) Transform::up(-amount,  eye,  up);
           else if (transop == scale) sy -= amount * 0.01 ; 
           else if (transop == translate) ty -= amount * 0.01 ; 
 		  else if (transop == zTranslate) tz -= amount * 0.01 ;
+		  else if (transop == light0) lightposn[2] -= amount * 0.01;
+		  else if (transop == light1) lightposn[6] -= amount * 0.01;
+		  else if (transop == light2) lightposn[10] -= amount * 0.01;
           break;
+	case GLUT_KEY_F1:
+		if (numLights < 1)
+			break;
+		else
+			transop = light0;
+			std::cout << "Operation is set to move light0\n" ; 
+			break;
+	case GLUT_KEY_F2:
+		if (numLights < 2)
+			break;
+		else
+			transop = light1;
+			std::cout << "Operation is set to move light1\n" ; 
+			break;
+			case GLUT_KEY_F3:
+		if (numLights < 3)
+			break;
+		else
+			transop = light2;
+			std::cout << "Operation is set to move light2\n" ; 
+			break;
 	}
 	glutPostRedisplay();
 }

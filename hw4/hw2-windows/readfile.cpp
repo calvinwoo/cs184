@@ -244,7 +244,7 @@ void readfile(const char * filename) {
 	useTex = true;
 	amount = 5;
         sx = sy = 1.0 ; // scales in x and y 
-        tx = ty = 0.0 ; // translation in x and y  
+        tx = ty = tz = 0.0 ; // translation in x and y  
 	useGlu = false; // don't use the glu perspective/lookat fns
 
 	glEnable(GL_DEPTH_TEST);
