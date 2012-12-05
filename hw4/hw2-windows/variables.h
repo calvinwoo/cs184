@@ -40,9 +40,12 @@ EXTERN bool useGlu; // Toggle use of "official" opengl/glm transform vs user
 EXTERN bool useTex;
 EXTERN GLuint vertexshader, fragmentshader, shaderprogram ; // shaders
 static enum {view, translate, scale, zTranslate, light0, light1, light2} transop ; // which operation to transform 
-enum shape {cube, sphere, teapot} ;
+enum shape {cube, sphere, teapot, tri} ;
 EXTERN float sx, sy ; // the scale in x and y 
 EXTERN float tx, ty, tz ; // the translation in x and y
+
+EXTERN int numvertex;
+EXTERN vec3 vertices[10];
 
 // Lighting parameter array, similar to that in the fragment shader
 const int numLights = 10 ; 
@@ -71,6 +74,9 @@ EXTERN struct object {
   GLfloat emission[4] ; 
   GLfloat shininess ;
   mat4 transform ; 
+  vec3 vert1;
+  vec3 vert2;
+  vec3 vert3;
 } objects[maxobjects] ;
 
 // Variables to set uniform params for lighting fragment shader 

@@ -348,6 +348,7 @@ int main(int argc, char* argv[]) {
 	glutIdleFunc(animate);
 	glutMotionFunc(mouse);
 	glutPassiveMotionFunc(showmouse);
+	cerr << "test" << vertices[1].x; 
 
 
 	if (argc > 2) {

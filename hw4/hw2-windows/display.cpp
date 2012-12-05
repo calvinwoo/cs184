@@ -378,6 +378,13 @@ void display() {
           else if (obj -> type == teapot) {
             glutSolidTeapot(obj->size) ; 
           }
+		  else if (obj -> type == tri) {
+			  glBegin(GL_TRIANGLES);
+				  glVertex3f(obj->vert1.x, obj->vert1.y,  obj->vert1.z);
+				  glVertex3f(obj->vert2.x, obj->vert2.y, obj->vert2.z);
+				  glVertex3f(obj->vert3.x, obj->vert3.y, obj->vert3.z);
+			  glEnd();
+		  }
 
         }
         glutSwapBuffers();

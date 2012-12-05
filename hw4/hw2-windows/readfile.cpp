@@ -183,6 +183,41 @@ void readfile(const char * filename) {
           }
         }
 
+		else if (cmd == "vertex") {
+			validinput = readvals(s, 3, values) ; 
+			if (validinput) {
+				vertices[numvertex].x = values[0];
+				vertices[numvertex].y = values[1];
+				vertices[numvertex].z = values[2];
+
+				numvertex++;
+			}
+		}
+
+		else if (cmd == "tri") {
+			if (numobjects == maxobjects) // No more objects 
+				cerr << "Reached Maximum Number of Objects " << numobjects << " Will ignore further objects\n" ; 
+			else {
+				validinput = readvals(s, 3, values) ; 
+				if (validinput) {
+					object * obj = &(objects[numobjects]) ; 
+					obj -> vert1 = vertices[(int)values[0]];
+					obj -> vert2 = vertices[(int)values[1]]; 
+					obj -> vert3 = vertices[(int)values[2]]; 
+					for (i = 0 ; i < 4 ; i++) {
+						(obj -> ambient)[i] = ambient[i] ; 
+						(obj -> diffuse)[i] = diffuse[i] ; 
+						(obj -> specular)[i] = specular[i] ; 
+						(obj -> emission)[i] = emission[i] ;
+					}
+					obj -> shininess = shininess ; 
+					obj -> transform = transfstack.top() ; 
+					obj -> type = tri; 
+				}
+				++numobjects ; 
+			}
+		}
+
         else if (cmd == "translate") {
           validinput = readvals(s,3,values) ; 
           if (validinput) {
