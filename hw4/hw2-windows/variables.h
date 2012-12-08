@@ -52,7 +52,10 @@ const int numLights = 10 ;
 EXTERN GLfloat lightposn [4*numLights] ; // Light Positions
 EXTERN GLfloat lightcolor[4*numLights] ; // Light Colors
 EXTERN GLfloat lightransf[4*numLights] ; // Lights transformed by modelview
-EXTERN int numused ;                     // How many lights are used 
+// Array storing the indices of the spotlights. Necessary global variable
+//because we cannot pass in structs to shaders
+EXTERN GLfloat spotLocations[numLights];
+EXTERN int numused ;              // How many lights are used 
 
 // Materials (read from file) 
 // With multiple objects, these are colors for each.
@@ -61,6 +64,12 @@ EXTERN GLfloat diffuse[4] ;
 EXTERN GLfloat specular[4] ; 
 EXTERN GLfloat emission[4] ; 
 EXTERN GLfloat shininess ; 
+
+// Attenuation (read from file)
+EXTERN GLfloat atten_const;
+EXTERN GLfloat atten_linear;
+EXTERN GLfloat atten_quad;
+
 
 // For multiple objects, read from a file.  
 const int maxobjects = 30 ; 
@@ -91,4 +100,7 @@ EXTERN GLuint diffusecol ;
 EXTERN GLuint specularcol ; 
 EXTERN GLuint emissioncol ; 
 EXTERN GLuint shininesscol ; 
+EXTERN GLuint attenconst ;
+EXTERN GLuint attenlinear ;
+EXTERN GLuint attenquad ;
 

@@ -216,6 +216,9 @@ void display() {
 		
         if (numused) {
           glUniform1i(enablelighting,true) ;
+		  glUniform1f(attenconst, atten_const);
+		  glUniform1f(attenlinear, atten_linear);
+		  glUniform1f(attenquad, atten_quad);
 
           // YOUR CODE FOR HW 2 HERE.  
           // You need to pass the lights to the shader. 

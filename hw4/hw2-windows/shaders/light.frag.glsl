@@ -33,6 +33,11 @@ uniform vec4 specular ;
 uniform vec4 emission ; 
 uniform float shininess ; 
 
+// Now, set the attenuation parameters. Only affects point and spotlights
+uniform float atten_const;
+uniform float atten_linear;
+uniform float atten_quad;
+
 vec4 ComputeLight (const in vec3 direction, const in vec4 lightcolor, const in vec3 normal, const in vec3 halfvec, const in vec4 mydiffuse, const in vec4 myspecular, const in float myshininess) {
 
         float nDotL = dot(normal, direction)  ;         
@@ -58,6 +63,8 @@ void main (void)
 		vec3 directioni;
 		vec3 halfi;
 		vec4 coli;
+		float atten;
+		float distance;
 
 
         // YOUR CODE FOR HW 2 HERE
@@ -76,12 +83,16 @@ void main (void)
 		for(int i = 0; i < numLights; i++) {
 			if(lightposn[i].w == 0) {
 				directioni = normalize (lightposn[i].xyz);
+				atten = 1.0;
 			} else {
 				positioni = lightposn[i].xyz / lightposn[i].w; 
 				directioni = normalize (positioni - mypos);
+				distance = length(directioni) ;
+				atten = 1.0 / (atten_const + atten_linear * distance + (atten_quad * distance * distance)) ;
+				
 			}
 			halfi = normalize(directioni + eyedirn);
-			coli = ComputeLight(directioni, lightcolor[i], normal, halfi, diffuse, specular, shininess);
+			coli = atten * ComputeLight(directioni, lightcolor[i], normal, halfi, diffuse, specular, shininess);
 			finalcolor = finalcolor + coli;
 		}
 		finalcolor = finalcolor + ambient + emission;
