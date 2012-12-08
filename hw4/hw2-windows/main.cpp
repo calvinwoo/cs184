@@ -80,7 +80,9 @@ void printHelp() {
 	    << "press 'i' to run image grader test cases\n"
             << "press 'g' to switch between using glm::lookAt and glm::Perspective or your own LookAt.\n"       
             << "press 'r' to reset the transformations.\n"
-            << "press 'v' 't' 's' to do view [default], translate, scale.\n"
+            << "press 'v' 't' 's' to do view, translate [default], scale.\n"
+			<< "press 'F1-3' to alter lights\n"
+			<< "press '1-3' to alter individual objects\n"
             << "press ESC to quit.\n" ;      
 }
 
@@ -118,8 +120,8 @@ void keyboard(unsigned char key, int x, int y) {
         case 'r': // reset eye and up vectors, scale and translate. 
 		eye = eyeinit ; 
 		up = upinit ; 
-                sx = sy = 1.0 ; 
-                tx = ty = tz = 0.0 ; 
+                //sx = sy = 1.0 ; 
+                //tx = ty = tz = 0.0 ; 
 		center = centerinit;
 		break ;   
         case 'v': 
@@ -170,6 +172,27 @@ void keyboard(unsigned char key, int x, int y) {
 		case 'l':
                 useTex = !useTex;
                 break ; 
+		case '1':
+			if (numobjects < 1)
+				break;
+			else
+				type = obj0;
+				std::cout << "Type is set to obj0\n" ; 
+				break;
+		case '2':
+			if (numobjects < 2)
+				break;
+			else
+				type = obj1;
+				std::cout << "Type is set to obj1\n" ; 
+				break;
+		case '3':
+			if (numobjects < 3)
+				break;
+			else
+				type = obj2;
+				std::cout << "Type is set to obj2\n" ; 
+				break;
         }
 	glutPostRedisplay();
 }
@@ -180,59 +203,133 @@ void keyboard(unsigned char key, int x, int y) {
 void specialKey(int key, int x, int y) {
 	switch(key) {
 	case 100: //left
-          if (transop == view) Transform::left(amount, eye,  up);
+          /*if (transop == view) Transform::left(amount, eye,  up);
           else if (transop == scale) sx -= amount * 0.01 ; 
           else if (transop == translate) tx -= amount * 0.01 ; 
-		  else if (transop == light0) lightposn[0] -= amount * 0.01;
-		  else if (transop == light1) lightposn[4] -= amount * 0.01;
-		  else if (transop == light2) lightposn[8] -= amount * 0.01;
+		  else*/ 
+		  if (type == light0) lightposn[0] -= amount * 0.01;
+		  else if (type == light1) lightposn[4] -= amount * 0.01;
+		  else if (type == light2) lightposn[8] -= amount * 0.01;
+		  else if (type == obj0) {
+			  if (transop == translate)
+					objects[0].tx -= amount * 0.01;
+			  else if (transop == scale)
+					objects[0].sx -= amount * 0.01;
+		  }
+		  else if (type == obj1) {
+			  if (transop == translate)
+					objects[1].tx -= amount * 0.01;
+			  else if (transop == scale)
+					objects[1].sx -= amount * 0.01;
+		  }
+		  else if (type == obj2) {
+			  if (transop == translate)
+					objects[2].tx -= amount * 0.01;
+			  else if (transop == scale)
+					objects[2].sx -= amount * 0.01;
+		  }
           break;
 	case 101: //up
-          if (transop == view) Transform::up(amount,  eye,  up);
+          /*if (transop == view) Transform::up(amount,  eye,  up);
           else if (transop == scale) sy += amount * 0.01 ; 
           else if (transop == translate) ty += amount * 0.01 ; 
 		  else if (transop == zTranslate) tz += amount * 0.01 ;
-		  else if (transop == light0) lightposn[2] += amount * 0.01;
-		  else if (transop == light1) lightposn[6] += amount * 0.01;
-		  else if (transop == light2) lightposn[10] += amount * 0.01;
+		  else*/ 
+		  if (type == light0) lightposn[2] += amount * 0.01;
+		  else if (type == light1) lightposn[6] += amount * 0.01;
+		  else if (type == light2) lightposn[10] += amount * 0.01;
+		  else if (type == obj0) {
+			  if (transop == translate)
+					objects[0].tz += amount * 0.01;
+			  else if (transop == scale)
+					objects[0].sy += amount * 0.01;
+		  }
+		  else if (type == obj1) {
+			  if (transop == translate)
+					objects[1].tz += amount * 0.01;
+			  else if (transop == scale)
+					objects[1].sz += amount * 0.01;
+		  }
+		  else if (type == obj2) {
+			  if (transop == translate)
+					objects[2].tz += amount * 0.01;
+			  else if (transop == scale)
+					objects[2].sz += amount * 0.01;
+		  }
           break;
 	case 102: //right
-          if (transop == view) Transform::left(-amount, eye,  up);
+          /*if (transop == view) Transform::left(-amount, eye,  up);
           else if (transop == scale) sx += amount * 0.01 ; 
           else if (transop == translate) tx += amount * 0.01 ; 
-		  else if (transop == light0) lightposn[0] += amount * 0.01;
-		  else if (transop == light1) lightposn[4] += amount * 0.01;
-		  else if (transop == light2) lightposn[8] += amount * 0.01;
+		  else*/ if (type == light0) lightposn[0] += amount * 0.01;
+		  else if (type == light1) lightposn[4] += amount * 0.01;
+		  else if (type == light2) lightposn[8] += amount * 0.01;
+		  else if (type == obj0) {
+			  if (transop == translate)
+					objects[0].tx += amount * 0.01;
+			  else if (transop == scale)
+					objects[0].sx += amount * 0.01;
+		  }
+		  else if (type == obj1) {
+			  if (transop == translate)
+					objects[1].tx += amount * 0.01;
+			  else if (transop == scale)
+					objects[1].sx += amount * 0.01;
+		  }
+		  else if (type == obj2) {
+			  if (transop == translate)
+					objects[2].tx += amount * 0.01;
+			  else if (transop == scale)
+					objects[2].sx += amount * 0.01;
+		  }
           break;
 	case 103: //down
-          if (transop == view) Transform::up(-amount,  eye,  up);
+          /*if (transop == view) Transform::up(-amount,  eye,  up);
           else if (transop == scale) sy -= amount * 0.01 ; 
           else if (transop == translate) ty -= amount * 0.01 ; 
 		  else if (transop == zTranslate) tz -= amount * 0.01 ;
-		  else if (transop == light0) lightposn[2] -= amount * 0.01;
-		  else if (transop == light1) lightposn[6] -= amount * 0.01;
-		  else if (transop == light2) lightposn[10] -= amount * 0.01;
+		  else*/ if (type == light0) lightposn[2] -= amount * 0.01;
+		  else if (type == light1) lightposn[6] -= amount * 0.01;
+		  else if (type == light2) lightposn[10] -= amount * 0.01;
+		  else if (type == obj0) {
+			  if (transop == translate)
+					objects[0].tz -= amount * 0.01;
+			  else if (transop == scale)
+					objects[0].sy -= amount * 0.01;
+		  }
+		  else if (type == obj1) {
+			  if (transop == translate)
+					objects[1].tz -= amount * 0.01;
+			  else if (transop == scale)
+					objects[1].sy -= amount * 0.01;
+		  }
+		  else if (type == obj2) {
+			  if (transop == translate)
+					objects[2].tz -= amount * 0.01;
+			  else if (transop == scale)
+					objects[2].sy -= amount * 0.01;
+		  }
           break;
 	case GLUT_KEY_F1:
 		if (numLights < 1)
 			break;
 		else
-			transop = light0;
-			std::cout << "Operation is set to move light0\n" ; 
+			type = light0;
+			std::cout << "Type is set to move light0\n" ; 
 			break;
 	case GLUT_KEY_F2:
 		if (numLights < 2)
 			break;
 		else
-			transop = light1;
-			std::cout << "Operation is set to move light1\n" ; 
+			type = light1;
+			std::cout << "Type is set to move light1\n" ; 
 			break;
-			case GLUT_KEY_F3:
+	case GLUT_KEY_F3:
 		if (numLights < 3)
 			break;
 		else
-			transop = light2;
-			std::cout << "Operation is set to move light2\n" ; 
+			type = light2;
+			std::cout << "Type is set to move light2\n" ; 
 			break;
 	}
 	glutPostRedisplay();

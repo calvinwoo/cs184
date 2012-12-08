@@ -39,10 +39,11 @@ EXTERN float fovy ;
 EXTERN bool useGlu; // Toggle use of "official" opengl/glm transform vs user 
 EXTERN bool useTex;
 EXTERN GLuint vertexshader, fragmentshader, shaderprogram ; // shaders
-static enum {view, translate, scale, zTranslate, light0, light1, light2} transop ; // which operation to transform 
+static enum {translate, view, scale, zTranslate} transop ; // which operation to transform 
+static enum {light0, light1, light2, obj0, obj1, obj2} type;
 enum shape {cube, sphere, teapot, tri} ;
-EXTERN float sx, sy ; // the scale in x and y 
-EXTERN float tx, ty, tz ; // the translation in x and y
+//EXTERN float sx, sy ; // the scale in x and y 
+//EXTERN float tx, ty, tz ; // the translation in x and y
 
 EXTERN int numvertex;
 EXTERN vec3 vertices[10];
@@ -83,6 +84,8 @@ EXTERN struct object {
   GLfloat emission[4] ; 
   GLfloat shininess ;
   mat4 transform ; 
+  float tx, ty, tz;
+  float sx, sy, sz;
   vec3 vert1;
   vec3 vert2;
   vec3 vert3;
