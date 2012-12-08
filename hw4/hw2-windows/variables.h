@@ -66,9 +66,10 @@ EXTERN GLfloat emission[4] ;
 EXTERN GLfloat shininess ; 
 
 // Attenuation (read from file)
-EXTERN GLfloat atten_const;
-EXTERN GLfloat atten_linear;
-EXTERN GLfloat atten_quad;
+// Intialized to no attenuation
+EXTERN GLfloat atten_const ;
+EXTERN GLfloat atten_linear ;
+EXTERN GLfloat atten_quad ;
 
 
 // For multiple objects, read from a file.  
