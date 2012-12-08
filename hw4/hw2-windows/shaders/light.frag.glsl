@@ -86,8 +86,8 @@ void main (void)
 				atten = 1.0;
 			} else {
 				positioni = lightposn[i].xyz / lightposn[i].w; 
-				directioni = normalize (positioni - mypos);
-				distance = length(directioni) ;
+				distance = length(positioni - mypos);
+				directioni = normalize(positioni - mypos);
 				atten = 1.0 / (atten_const + atten_linear * distance + (atten_quad * distance * distance)) ;
 				
 			}
@@ -95,7 +95,7 @@ void main (void)
 			coli = atten * ComputeLight(directioni, lightcolor[i], normal, halfi, diffuse, specular, shininess);
 			finalcolor = finalcolor + coli;
 		}
-		finalcolor = finalcolor + ambient + emission;
+		finalcolor = finalcolor + ambient + emission ;
 
         gl_FragColor = finalcolor ; 
         }

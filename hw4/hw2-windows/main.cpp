@@ -401,7 +401,11 @@ void animate() {
 }
 
 void init() {
-      // Initialize shaders
+	  // Initialize attenuation to none
+	  atten_const = 1.0;
+	  atten_linear = 0;
+	  atten_quad = 0;
+	  // Initialize shaders
       vertexshader = initshaders(GL_VERTEX_SHADER, "shaders/light.vert.glsl") ;
       fragmentshader = initshaders(GL_FRAGMENT_SHADER, "shaders/light.frag.glsl") ;
       shaderprogram = initprogram(vertexshader, fragmentshader) ; 
