@@ -316,16 +316,22 @@ void init() {
 	  istex = glGetUniformLocation(shaderprogram,"istex") ;
 	  tex = glGetUniformLocation(shaderprogram,"tex") ;
       lightpos = glGetUniformLocation(shaderprogram,"lightposn") ;       
-      lightcol = glGetUniformLocation(shaderprogram,"lightcolor") ;       
+      lightcol = glGetUniformLocation(shaderprogram,"lightcolor") ; 
       numusedcol = glGetUniformLocation(shaderprogram,"numused") ;       
       ambientcol = glGetUniformLocation(shaderprogram,"ambient") ;       
       diffusecol = glGetUniformLocation(shaderprogram,"diffuse") ;       
       specularcol = glGetUniformLocation(shaderprogram,"specular") ;       
-      emissioncol = glGetUniformLocation(shaderprogram,"emission") ;       
-      shininesscol = glGetUniformLocation(shaderprogram,"shininess") ;  
-	  attenconst = glGetUniformLocation(shaderprogram, "atten_const") ;
-	  attenlinear = glGetUniformLocation(shaderprogram, "atten_linear") ;
-	  attenquad = glGetUniformLocation(shaderprogram, "atten_quad") ;
+      emissioncol = glGetUniformLocation(shaderprogram,"emission");       
+      shininesscol = glGetUniformLocation(shaderprogram,"shininess");  
+	  attenconst = glGetUniformLocation(shaderprogram, "atten_const");
+	  attenlinear = glGetUniformLocation(shaderprogram, "atten_linear");
+	  attenquad = glGetUniformLocation(shaderprogram, "atten_quad");
+	  numspotval = glGetUniformLocation(shaderprogram, "numSpots");
+	  spotdirnval = glGetUniformLocation(shaderprogram, "spot_directions");
+	  spotexponentval = glGetUniformLocation(shaderprogram, "spot_exponents");
+	  spotcoscutoffval = glGetUniformLocation(shaderprogram, "spot_coscutoffs");
+	  spotindexval = glGetUniformLocation(shaderprogram, "spot_indices");
+	  numusedval = glGetUniformLocation(shaderprogram, "numused");
 }
 
 int main(int argc, char* argv[]) {
@@ -344,7 +350,6 @@ int main(int argc, char* argv[]) {
 	if (GLEW_OK != err) { 
 		std::cerr << "Error: " << glewGetString(err) << std::endl; 
 	} 
-
 	init();
     readfile(argv[1]) ; 
 	glutDisplayFunc(display);

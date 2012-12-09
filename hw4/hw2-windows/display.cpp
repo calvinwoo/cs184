@@ -235,6 +235,13 @@ void display() {
 		  }
 		  glUniform4fv(lightpos, numLights, lightransf);
 		  glUniform4fv(lightcol, numLights, lightcolor);
+		  // Specific spotlight values
+		  glUniform1fv(spotindexval, numLights, spotindices) ;
+		  glUniform3fv(spotdirnval, numLights, spotdirections);
+		  glUniform1i(numspotval, numSpots);
+		  glUniform1fv(spotexponentval, numLights, spotexponents);
+		  glUniform1fv(spotcoscutoffval, numLights, spotcoscutoffs);
+		  glUniform1i(numusedval, numused);
         }
         else glUniform1i(enablelighting,false) ; 
 

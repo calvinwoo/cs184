@@ -52,9 +52,15 @@ const int numLights = 10 ;
 EXTERN GLfloat lightposn [4*numLights] ; // Light Positions
 EXTERN GLfloat lightcolor[4*numLights] ; // Light Colors
 EXTERN GLfloat lightransf[4*numLights] ; // Lights transformed by modelview
+// Spotlight params
+EXTERN GLfloat spotdirections[3*numLights];
+EXTERN GLfloat spotcoscutoffs[numLights];
+EXTERN GLfloat spotexponents[numLights];
+EXTERN GLfloat spotindices[numLights];
+EXTERN int numSpots;
+
 // Array storing the indices of the spotlights. Necessary global variable
 //because we cannot pass in structs to shaders
-EXTERN GLfloat spotLocations[numLights];
 EXTERN int numused ;              // How many lights are used 
 
 // Materials (read from file) 
@@ -84,6 +90,7 @@ EXTERN struct object {
   GLfloat emission[4] ; 
   GLfloat shininess ;
   mat4 transform ; 
+  
   vec3 vert1;
   vec3 vert2;
   vec3 vert3;
@@ -104,4 +111,11 @@ EXTERN GLuint shininesscol ;
 EXTERN GLuint attenconst ;
 EXTERN GLuint attenlinear ;
 EXTERN GLuint attenquad ;
+// Shader information for spotlights
+EXTERN GLuint numspotval ;
+EXTERN GLuint spotdirnval ;
+EXTERN GLuint spotcoscutoffval ;
+EXTERN GLuint spotexponentval ;
+EXTERN GLuint spotindexval;
+EXTERN GLuint numusedval;
 

@@ -82,7 +82,7 @@ void readfile(const char * filename) {
 				stringstream s(str) ;
 				s >> cmd ; 
 				int i ; 
-				GLfloat values[10] ; // position and color for light, colors for others
+				GLfloat values[15] ; // position and color for light, colors for others
 				// Up to 10 params for cameras.  
 				bool validinput ; // validity of input 
 
@@ -104,12 +104,12 @@ void readfile(const char * filename) {
 						}
 					}
 				}
-				// read in as: x y z w r g b a spotdirn spotexponent spotcutoff
+				// read in as: x y z w r g b a spotdirnx spotdirny spotdirnz spotexponent spotcutoff
 				else if (cmd == "spot") { 
 					if (numused == numLights) // No more Lights 
 						cerr << "Reached Maximum Number of Lights " << numused << " Will ignore further lights\n" ;
 					else {
-						validinput = readvals(s, 11, values) ; // Position/color for lts.
+						validinput = readvals(s, 13, values) ; // Position/color for lts.
 						if (validinput) {
 							// YOUR CODE FOR HW 2 HERE. 
 							// Note that values[0...7] shows the read in values 
@@ -117,6 +117,11 @@ void readfile(const char * filename) {
 							// Those arrays can then be used in display too.  
 							for (i = 0 ; i < 4 ; i++) lightposn[numused*4 + i] = values[i] ; 
 							for (i = 0 ; i < 4 ; i++) lightcolor[numused*4 + i] = values[i+4] ; 
+							for (i = 0 ; i < 3 ; i++) spotdirections[numSpots*3 + i] = values[i+8];
+							spotexponents[numSpots] = values[11];
+							spotcoscutoffs[numSpots] = cos(pi/180 * (values[12]));
+							spotindices[numSpots]= numused;
+							++numSpots ; 
 							++numused ; 
 						}
 					}
