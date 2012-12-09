@@ -206,6 +206,12 @@ void readfile(const char * filename) {
 								}
 								obj -> shininess = shininess ; 
 								obj -> transform = transfstack.top() ; 
+								obj -> tx = 0;
+								obj -> ty = 0;
+								obj -> tz = 0;
+								obj -> sx = 1.0;
+								obj -> sy = 1.0;
+								obj -> sz = 1.0;
 								if (cmd == "sphere") obj -> type = sphere ; 
 								else if (cmd == "cube") obj -> type = cube ; 
 								else if (cmd == "teapot") obj -> type = teapot ; 
@@ -244,6 +250,12 @@ void readfile(const char * filename) {
 								obj -> shininess = shininess ; 
 								obj -> transform = transfstack.top() ; 
 								obj -> type = tri; 
+								obj -> tx = 0;
+								obj -> ty = 0;
+								obj -> tz = 0;
+								obj -> sx = 1.0;
+								obj -> sy = 1.0;
+								obj -> sz = 1.0;
 							}
 							++numobjects ; 
 						}
@@ -309,8 +321,8 @@ void readfile(const char * filename) {
 			isAnim = true;
 			useTex = true;
 			amount = 5;
-			sx = sy = 1.0 ; // scales in x and y 
-			tx = ty = tz = 0.0 ; // translation in x and y  
+			//sx = sy = 1.0 ; // scales in x and y 
+			//tx = ty = tz = 0.0 ; // translation in x and y  
 			useGlu = false; // don't use the glu perspective/lookat fns
 
 			glEnable(GL_DEPTH_TEST);

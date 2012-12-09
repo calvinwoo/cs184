@@ -250,7 +250,8 @@ void display() {
 		
 
         // Transformations for objects, involving translation and scaling 
-        mat4 sc(1.0) , tr(1.0), transf(1.0) ; 
+        //mat4 sc(1.0) , tr(1.0), transf(1.0) ; 
+		mat4 transf(1.0);
         /*sc = Transform::scale(sx,sy,1.0) ; 
         tr = Transform::translate(tx,ty,tz) ;*/
 
@@ -258,7 +259,8 @@ void display() {
         // You need to use scale, translate and modelview to 
         // set up the net transformation matrix for the objects.  
         // Account for GLM issues etc.  
-		transf =  mv * tr * sc;
+		//transf =  mv * tr * sc;
+		transf =  mv;
 		glLoadMatrixf(&transf[0][0]) ;
 
 		glPushMatrix();
@@ -360,6 +362,9 @@ void display() {
 
         for (int i = 0 ; i < numobjects ; i++) {
           object * obj = &(objects[i]) ; 
+		  mat4 sc(1.0) , tr(1.0); 
+		  sc = Transform::scale(obj->sx, obj->sy, 1.0) ; 
+          tr = Transform::translate(obj->tx,obj->ty,obj->tz) ;
 
           {
           // YOUR CODE FOR HW 2 HERE. 
@@ -372,7 +377,7 @@ void display() {
 			glUniform4fv(emissioncol, 1, obj->emission);
 			glUniform1f(shininesscol, obj->shininess); 
 
-			mat4 transformation = transf * glm::transpose(obj->transform);
+			mat4 transformation = transf * glm::transpose(obj->transform) * tr * sc;
 			glLoadMatrixf(&transformation[0][0]);
           }
 
