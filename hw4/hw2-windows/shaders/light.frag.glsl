@@ -107,7 +107,7 @@ void main (void)
 				spotDot = pow(dot(normalize(spot_directions[count]), normalize(-directioni)),spot_exponents[count]);
 				
 				//check if lit by spotlight
-				if (spotDot > spot_coscutoffs[count]){
+				if (spotDot >= spot_coscutoffs[count]){
 					atten = spotDot / (atten_const + atten_linear * distance + (atten_quad * distance * distance)) ;
 				} else {
 					atten = 0;
